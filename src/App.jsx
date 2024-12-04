@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./NavBar";
+import NavBar from "./navbar";
 import Home from "./pages/home"; 
 
 const App = () => {
