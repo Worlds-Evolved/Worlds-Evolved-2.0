@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "main": "server.cjs",
-  
+  "type": "module",
   "scripts": {
     "dev1": "vite",
     "dev": "nodemon server.cjs",

@@ -1,5 +1,5 @@
 ### User Registration
-POST http://localhost:3000/register
+POST https://worlds-evolved-2-0.onrender.com/register
 Content-Type: application/json
 
 {
