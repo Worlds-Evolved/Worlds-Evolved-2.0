@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Home from "./pages/home"; 
-import ApiTest from "./api/api";
+import ApiTest from "./api/api-test";
 import Login from "./pages/login";
 
 const App = () => {
