@@ -11,8 +11,8 @@ const AccountPage = () => {
 
     const fetchUserDetails = async () => {
       try {
-        const user = await getUserDetails(token);
-        setUserDetails(user);
+        const username = await getUserDetails(token);
+        setUserDetails(username);
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
