@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
 const cors = require('cors')
+const userRoutes = require('./API/users.cjs')
 const PORT = process.env.PORT || 3000;
 
 app.use(cors())
 app.use(require("morgan")("dev"));
 app.use(express.json());
+
+app.use("/api/users", userRoutes)
 
 
 app.get('/test', (req, res,next) => {
