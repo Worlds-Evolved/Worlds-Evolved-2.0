@@ -13,17 +13,20 @@ function createToken(userId) {
 router.use(async (req, res, next) => {
   const authHeader = req.headers.authorization;
   const token = authHeader?.slice(7);
+  console.log("TOKEN",token)
   if (!token) return next();
-
+  
   try {
     const { id } = jwt.verify(token, JWT_SECRET);
     const user = await prisma.user.findUniqueOrThrow({ where: { id }});
+    console.log("USER", user)
     req.user = user;
     next();
   } catch (error) {
     next({ status: 401, message: `You're not logged in` })
   }
 });
+
 
 router.post("/register", async (req, res, next) => {
   const { username, email, password } = req.body;
