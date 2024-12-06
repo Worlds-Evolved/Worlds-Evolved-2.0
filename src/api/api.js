@@ -39,7 +39,7 @@ export const getCampaigns = async (token) => {
     },
   });
   const campaignsJson = await response.json();
-  return campaignsJson;
+  return Array.isArray(campaignsJson) ? campaignsJson : [];
 };
 
 export const getCampaignDetails = async (campaignId, token) => {
