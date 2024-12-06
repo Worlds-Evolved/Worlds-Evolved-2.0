@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const Register = () => {
+const Register = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,8 +14,17 @@ const Register = () => {
     try {
       const response = await registerUser(userData);
 
+      const token = await response.json();
+      if (response.ok) {
+        const accessToken = token.access_token;
+        setToken(accessToken);
+        localStorage.setItem('token', accessToken);
+
+      } else {
+        console.log('Registration Failed: ')
+      }
     } catch (err) {
-      console.log('error');
+      console.log('Error during registration');
     }
   };
 
