@@ -1,7 +1,7 @@
-const APIURL = 'https://worlds-evolved-2-0.onrender.co';
+const APIURL = 'http://localhost:3000';
 
 export const registerUser = async (userData) => {
-  const response = await fetch(`${APIURL}/users/register`, {
+  const response = await fetch(`${APIURL}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userData),
@@ -11,7 +11,7 @@ export const registerUser = async (userData) => {
 };
 
 export const loginUser = async (credentials) => {
-  const response = await fetch(`${APIURL}/users/login`, {
+  const response = await fetch(`${APIURL}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(credentials),
@@ -21,7 +21,7 @@ export const loginUser = async (credentials) => {
 };
 
 export const getUserDetails = async (token) => {
-  const response = await fetch(`${APIURL}/users/me`, {
+  const response = await fetch(`${APIURL}/me`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,

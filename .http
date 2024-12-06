@@ -1,10 +1,10 @@
 ### User Registration
-POST https://worlds-evolved-2-0.onrender.com/register
+POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-  "email": "Matt@matt.com",
-  "username": "testuser",
+  "email": "Mattk@matt.com",
+  "username": "Mkovach",
   "password": "testpassword"
 }
 
