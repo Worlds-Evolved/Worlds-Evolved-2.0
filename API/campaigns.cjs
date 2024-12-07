@@ -9,11 +9,15 @@ router.use(authenticate);
 router.get("/", async (req, res, next) => {
   try {
     const campaigns = await prisma.campaign.findMany({
-      include: { gameMaster: true, players: true, interativeMaps: true },
-    })
-    res.json(campaigns)
+      include: {
+        gameMaster: true,
+        players: true,
+        interactiveMaps: true, 
+      }
+    });
+    res.json(campaigns);
   } catch (error) {
-    console.error("Failed to find any campaigns:", error)
+    console.error("Failed to find any campaigns:", error);
     next(error);
   }
 });
