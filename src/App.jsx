@@ -7,6 +7,7 @@ import Login from "./pages/login";
 import AccountPage from "./pages/account-details";
 import Register from "./pages/register";
 import MyMap from "./components/mymap";
+import './app.css'
 
 
 const App = () => {
