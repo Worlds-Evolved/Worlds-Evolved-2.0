@@ -70,7 +70,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.delete("/campaigns/:id/players/:playerId", async (req, res, next) => {
+router.delete("/:id/players/:playerId", async (req, res, next) => {
   const { id: campaignId, playerId } = req.params;
   const userId = req.user.id; 
 

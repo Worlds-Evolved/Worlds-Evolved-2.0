@@ -32,7 +32,7 @@ Authorization: Bearer {{token}}
 {
   "title": "Epic Adventure",
   "description": "A thrilling journey through dangerous lands.",
-  "playerIds": [2]  
+  "playerIds": [2, 3, 4, 5, 6, 7, 8]  
 }
 
 ### Details of all Campaigns
@@ -44,5 +44,5 @@ GET http://localhost:3000/campaign/12
 Authorization: Bearer {{token}}
 
 ### Remove player from game
-DELETE http://localhost:3000/campaigns/12/players/1
+DELETE http://localhost:3000/campaign/13/players/7
 Authorization: Bearer {{token}}
