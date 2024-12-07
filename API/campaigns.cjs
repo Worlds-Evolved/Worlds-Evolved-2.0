@@ -18,3 +18,19 @@ router.get("/campaigns", async (req, res, next) => {
   }
 });
 
+router.get("/campaigns/:id", async (req, res, next) => {
+  try {
+    const campaign = await prisma.campaign.findUnique({
+      where: { id: +req.params.id },
+      include: { gameMaster: true, players: true, interactiveMaps: true },
+    });
+
+    if(!campaign) {
+      return res.status(404).json({ error: "Campaign not found" });
+    }
+    res.json(campaign)
+  } catch (error) {
+    console.error("Failed to find any campaigns:", error)
+    next(error);
+  }
+});
