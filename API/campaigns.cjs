@@ -34,3 +34,37 @@ router.get("/campaigns/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+router.post("/campaigns", async (req, res, next) => {
+  const { title, description, playerIds = [] } = req.body;
+  const userId = req.user.id; 
+
+  if (!title || !description) {
+    return res.status(400).json({ error: "Title and description are required" });
+  }
+
+  if (playerIds.includes(userId)) {
+    return res.status(400).json({ error: "You cannot be both a player and the gameMaster in the same campaign" });
+  }
+
+  try {
+    const newCampaign = await prisma.campaign.create({
+      data: {
+        title,
+        description,
+        gameMasterId: userId, 
+        players: {
+          connect: playerIds.map((id) => ({ id })), 
+        },
+      },
+    });
+
+    res.status(201).json(newCampaign);
+  } catch (error) {
+    console.error("Error creating campaign:", error);
+    next(error); 
+  }
+});
+
+
+module.exports = router;

@@ -18,7 +18,17 @@ Content-Type: application/json
   "password": "testpassword"
 }
 
-### Get All Products
+### Get user information
 @token = {{login.response.body.token}}
 GET http://localhost:3000/user
 Authorization: Bearer {{token}}
+
+### Create Campaign
+POST http://localhost:3000/campaigns
+Authorization: Bearer {{token}}
+
+{
+  "title": "Epic Adventure",
+  "description": "A thrilling journey through dangerous lands.",
+  "playerIds": [3, 2]  
+}
