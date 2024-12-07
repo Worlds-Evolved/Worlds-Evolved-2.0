@@ -6,3 +6,14 @@ const router = express.Router();
 
 router.use(authenticate); 
 
+router.get("/campaigns", async (req, res, next) => {
+  try {
+    const campaigns = await prisma.campaign.findMany({
+      include: { gameMaster: true, players: true, interativeMaps: true },
+    })
+    res.json(campaigns)
+  } catch (error) {
+    next(error);
+  }
+});
+
