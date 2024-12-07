@@ -21,7 +21,7 @@ export const loginUser = async (credentials) => {
 };
 
 export const getUserDetails = async (token) => {
-  const response = await fetch(`${APIURL}/me`, {
+  const response = await fetch(`${APIURL}/users`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
@@ -39,7 +39,7 @@ export const getCampaigns = async (token) => {
     },
   });
   const campaignsJson = await response.json();
-  return campaignsJson;
+  return Array.isArray(campaignsJson) ? campaignsJson : [];
 };
 
 export const getCampaignDetails = async (campaignId, token) => {
