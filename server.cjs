@@ -14,11 +14,6 @@ app.use(require("./API/auth.cjs").router);
 app.use("/user", userRoutes)
 app.use("/campaign", campaignRoutes)
 
-
-app.use((req, res, next) => {
-  console.log(`Request made to: ${req.originalUrl}`);
-  next();
-});
 app.get('/test', (req, res,next) => {
   res.json('test works')
 })
