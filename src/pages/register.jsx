@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { registerUser } from "../api/api";
 
 const Register = ({ setToken }) => {
   const [username, setUsername] = useState('');
@@ -10,21 +11,17 @@ const Register = ({ setToken }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const userData = { username, email, password };
-
+    console.log(userData)
     try {
       const response = await registerUser(userData);
-
-      const token = await response.json();
-      if (response.ok) {
-        const accessToken = token.access_token;
-        setToken(accessToken);
-        localStorage.setItem('token', accessToken);
-
+      if (response.token) {
+        console.log('Token:', response.token);
+        localStorage.setItem('token', response.token);
       } else {
-        console.log('Registration Failed: ')
+        console.log('Registration failed');
       }
     } catch (err) {
-      console.log('Error during registration');
+      console.log('Error during registration', err);
     }
   };
 
