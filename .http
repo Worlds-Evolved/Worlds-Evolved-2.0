@@ -34,3 +34,15 @@ Authorization: Bearer {{token}}
   "description": "A thrilling journey through dangerous lands.",
   "playerIds": [2]  
 }
+
+### Details of all Campaigns
+GET http://localhost:3000/campaign
+Authorization: Bearer {{token}}
+
+### Campaign by ID
+GET http://localhost:3000/campaign/12
+Authorization: Bearer {{token}}
+
+### Remove player from game
+DELETE http://localhost:3000/campaigns/12/players/1
+Authorization: Bearer {{token}}
