@@ -25,10 +25,12 @@ Authorization: Bearer {{token}}
 
 ### Create Campaign
 POST http://localhost:3000/campaign
+Content-Type: application/json
 Authorization: Bearer {{token}}
+
 
 {
   "title": "Epic Adventure",
   "description": "A thrilling journey through dangerous lands.",
-  "playerIds": [3, 2]  
+  "playerIds": [2]  
 }
