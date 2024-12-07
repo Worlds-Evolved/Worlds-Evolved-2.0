@@ -13,6 +13,7 @@ router.get("/campaigns", async (req, res, next) => {
     })
     res.json(campaigns)
   } catch (error) {
+    console.error("Failed to find any campaigns:", error)
     next(error);
   }
 });
