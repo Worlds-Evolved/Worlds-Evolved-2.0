@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require('cors')
 const userRoutes = require('./API/users.cjs')
-const campignRoutes = require('./API/campaigns.cjs')
+const campaignRoutes = require('./API/campaigns.cjs')
 const PORT = process.env.PORT || 3000;
 
 
@@ -12,9 +12,13 @@ app.use(express.json());
 
 app.use(require("./API/auth.cjs").router);
 app.use("/user", userRoutes)
-app.use("/campaign", campignRoutes)
+app.use("/campaign", campaignRoutes)
 
 
+app.use((req, res, next) => {
+  console.log(`Request made to: ${req.originalUrl}`);
+  next();
+});
 app.get('/test', (req, res,next) => {
   res.json('test works')
 })

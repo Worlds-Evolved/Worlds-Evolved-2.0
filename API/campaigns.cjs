@@ -35,7 +35,7 @@ router.get("/campaigns/:id", async (req, res, next) => {
   }
 });
 
-router.post("/campaigns", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const { title, description, playerIds = [] } = req.body;
   const userId = req.user.id; 
 

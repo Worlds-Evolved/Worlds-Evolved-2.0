@@ -24,7 +24,7 @@ GET http://localhost:3000/user
 Authorization: Bearer {{token}}
 
 ### Create Campaign
-POST http://localhost:3000/campaigns
+POST http://localhost:3000/campaign
 Authorization: Bearer {{token}}
 
 {
