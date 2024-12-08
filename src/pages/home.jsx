@@ -2,7 +2,17 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div>
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <img
+        src="https://d.img.vision/capstone/logo_-_transparent_background.png"
+        alt="Worlds Evolved Logo"
+        style={{
+          height: "22vh", 
+          width: "auto", 
+          marginBottom: "1vh",
+        }}
+      />
+      
       <h1>Worlds Evolved</h1>
       <h2>Bring your world to life</h2>
       <div>

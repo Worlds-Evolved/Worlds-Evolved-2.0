@@ -6,6 +6,9 @@ import ApiTest from "./api/api-test";
 import Login from "./pages/login";
 import AccountPage from "./pages/account-details";
 import Register from "./pages/register";
+import MyMap from "./components/mymap";
+import './app.css'
+
 
 const App = () => {
   return (
@@ -17,6 +20,7 @@ const App = () => {
         <Route path="/api-test" element={<ApiTest />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/mymap" element={<MyMap />} />
       </Routes>
     </>
   );
