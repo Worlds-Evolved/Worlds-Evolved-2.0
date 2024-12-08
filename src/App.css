@@ -13,3 +13,34 @@
   height: 100%;
   width: 100%;
 }
+
+.parchment-nav{
+  display: flex;
+  justify-content: center;
+  background-color: #fff3c9;
+  border: 3px solid #8b0000;
+  border-radius: 15px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-family: "IM Fell DW Pica SC", serif;
+}
+
+.parchment-nav a {
+  color: #8b0000; /* Deep red */
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin: 0 15px;
+  font-family: "IM Fell DW Pica", serif;
+  font-weight: normal;
+  font-style: italic;
+  transition: all 0.3s ease-in-out;
+}
+
+.parchment-nav a:hover {
+  color: #facf7f; /* Highlight color */
+  text-shadow: 0 0 5px #8b0000;
+}
+
+.parchment-nav a:active {
+  color: #d2691e; /* Darker highlight for active state */
+}
