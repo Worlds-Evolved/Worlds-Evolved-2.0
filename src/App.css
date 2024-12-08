@@ -14,9 +14,10 @@
   width: 100%;
 }
 
-.parchment-nav{
+.parchment-nav {
   display: flex;
-  justify-content: center;
+  align-items: center; 
+  justify-content: center; 
   background-color: #fff3c9;
   border: 3px solid #8b0000;
   border-radius: 15px;
