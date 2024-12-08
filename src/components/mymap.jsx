@@ -1,8 +1,6 @@
 import { MapContainer, ImageOverlay, } from 'react-leaflet';
 import L from 'leaflet';
 
-
-
 const MyMap = () => {
   const imageUrl = "https://d.img.vision/capstone/1000001374_(2).png";
   const bounds = [
@@ -10,6 +8,11 @@ const MyMap = () => {
     [5500, 8192],
   ];
 
+  const maxBounds = [
+    [0, 0],  // Southwest coordinates
+    [5500, 8192]  // Northeast coordinates
+  ];
+  
   return (
     <div className="map-container">
       <MapContainer
@@ -23,6 +26,7 @@ const MyMap = () => {
         zoomDelta={0.1} // Smooth zoom buttons
         scrollWheelZoom={true} // Enable scroll wheel zoom
         wheelPxPerZoomLevel={100} // Smooth scrolling response
+        maxBounds={maxBounds} // Set the max bounds to restrict map panning
       >
         <ImageOverlay url={imageUrl} bounds={bounds} />
         
