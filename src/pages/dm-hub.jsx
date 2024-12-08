@@ -44,9 +44,13 @@ const DmHub = () => {
         <h2></h2>
       
           <div className="campaign-details">
+          
             {campaignDetails.map((campaigndetail) => (
               <div key={campaigndetail.id} className="campaign-detail">
-                <h3>{campaignDetail.title}</h3>
+                {campaignDetails.gameMaster.map((gameMaster) =>
+                 <div key={gameMaster.id} className="game-master">
+                <h3> Welcome to {campaignDetail.title}! Hosted by {gameMaster.username}</h3>
+                )}
                 <h3>{campaigndetail.players}</h3>
 
                 <button>Invite</button>
@@ -55,7 +59,6 @@ const DmHub = () => {
               </div>
             ))}
           </div>
-        )}
       </div>
     </div>
   );
