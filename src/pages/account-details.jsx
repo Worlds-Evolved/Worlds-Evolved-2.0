@@ -125,7 +125,7 @@ const AccountPage = () => {
             {passwordSuccess && <p className="success">{passwordSuccess}</p>}
             <form onSubmit={handlePasswordChange} className="password-change-form">
               <div>
-                <label htmlFor="currentPassword">Current Password</label>
+                <label>Current Password</label>
                 <input
                   id="currentPassword"
                   name="currentPassword"
@@ -136,7 +136,7 @@ const AccountPage = () => {
                 />
               </div>
               <div>
-                <label htmlFor="newPassword">New Password</label>
+                <label>New Password</label>
                 <input
                   id="newPassword"
                   name="newPassword"
@@ -147,7 +147,7 @@ const AccountPage = () => {
                 />
               </div>
               <div>
-                <label htmlFor="confirmPassword">Confirm New Password</label>
+                <label>Confirm New Password</label>
                 <input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -163,7 +163,7 @@ const AccountPage = () => {
             <h2>Create Campaign</h2>
             <form onSubmit={handleCreateCampaign} className="create-campaign-form">
               <div>
-                <label htmlFor="title">Title</label>
+                <label>Title</label>
                 <input
                   id="title"
                   name="title"
@@ -174,7 +174,7 @@ const AccountPage = () => {
                 />
               </div>
               <div>
-                <label htmlFor="description">Description</label>
+                <label>Description</label>
                 <textarea
                   id="description"
                   name="description"
@@ -184,7 +184,7 @@ const AccountPage = () => {
                 />
               </div>
               <div>
-                <label htmlFor="playerIds">Player IDs (comma-separated)</label>
+                <label>Player IDs (comma-separated)</label>
                 <input
                   id="playerIds"
                   name="playerIds"
