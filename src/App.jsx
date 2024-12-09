@@ -6,6 +6,7 @@ import ApiTest from "./api/api-test";
 import Login from "./pages/login";
 import AccountPage from "./pages/account-details";
 import Register from "./pages/register";
+// import DmHub from "./pages/dm-hub";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/api-test" element={<ApiTest />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<AccountPage />} />
+        {/* <Route path="/dmhub" element={<DmHub />} /> */}
       </Routes>
     </>
   );

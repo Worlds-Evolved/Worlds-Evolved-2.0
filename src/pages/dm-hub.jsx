@@ -9,7 +9,7 @@ const DmHub = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token) return; 
+    if (!token) return;
 
     const fetchUserDetails = async () => {
       try {
@@ -31,24 +31,19 @@ const DmHub = () => {
 
     fetchUserDetails();
     fetchCampaignDetails();
-  }, []); 
- 
-  
+  }, [token]);
+
+
   return (
     <div className="dm-hub-page">
       <div className="dm-hub-container">
         <h1>Dungeon Master's Hun</h1>
-        
 
 
-        <h2></h2>
-      
-          <div className="campaign-details">
-          
-            {campaignDetails.map((campaigndetail) => (
-              <div key={campaigndetail.id} className="campaign-detail">
-                {campaignDetails.gameMaster.map((gameMaster) =>
-                 <div key={gameMaster.id} className="game-master">
+        {campaignDetails.map((campaigndetail) => (
+          <div key={campaigndetail.id} className="campaign-detail">
+            {campaignDetails.gameMaster.map((gameMaster) =>
+              <div key={gameMaster.id} className="game-master">
                 <h3> Welcome to {campaignDetail.title}! Hosted by {gameMaster.username}</h3>
                 )}
                 <h3>{campaigndetail.players}</h3>
@@ -59,10 +54,10 @@ const DmHub = () => {
               </div>
             ))}
           </div>
-      </div>
+          </div>
     </div>
-  );
+      );
 };
 
 
-export default DmHub;
+      export default DmHub;
