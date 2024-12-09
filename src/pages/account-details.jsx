@@ -50,6 +50,29 @@ const AccountPage = () => {
     fetchCampaigns();
   }, [token]);
 
+  const handleCreateCampaign = async (e) => {
+    e.preventDefault();
+    if (!token) return;
+
+    const playerIdsArray = newCampaignData.playerIds
+      .split(",")
+      .map((id) => +id.trim());
+
+    try {
+      const campaignData = {
+        title: newCampaignData.title,
+        description: newCampaignData.description,
+        playerIds: playerIdsArray,
+      };
+
+      const newCampaign = await createCampaign(campaignData, token);
+      console.log("Campaign created:", newCampaign);
+      navigate(`DM's HUB LINK GOES HERE`);
+    } catch (error) {
+      console.error("Error creating campaign:", error.response?.data?.error || "Failed to create campaign");
+    }
+  };
+
   return (
     <div className="account-page">
       <div className="account-container">
