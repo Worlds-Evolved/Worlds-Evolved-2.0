@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { getUserDetails, getCampaignDetails } from "../api/api";
 import { createCampaign, changePassword } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 const AccountPage = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [campaigns, setCampaigns] = useState([]);
+  const [newCampaignData, setNewCampaignData] = useState({
+    title: "",
+    description: "",
+    playerIds: "",
+  });
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordSuccess, setPasswordSuccess] = useState("");
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserDetails = async () => {
