@@ -43,13 +43,19 @@ export const getCampaigns = async (token) => {
 };
 
 export const getCampaignDetails = async (campaignId, token) => {
+  console.log("Campaign ID:", campaignId);
+  console.log("Token:", token);
+
   const response = await fetch(`${APIURL}/campaign/${campaignId}`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     },
   });
+
   const campaignDetailsJson = await response.json();
+  console.log("Campaign Details Response:", campaignDetailsJson);
+
   return campaignDetailsJson;
 };
 

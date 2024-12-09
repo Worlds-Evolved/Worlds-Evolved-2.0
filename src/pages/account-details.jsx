@@ -19,13 +19,20 @@ const AccountPage = () => {
     };
 
     const fetchCampaigns = async () => {
-      if (token) {
-        try {
-          const campaignsList = await getCampaignDetails(token);
-          setCampaigns(campaignsList);
-        } catch (err) {
-          console.error("Error fetching campaigns:", err);
-        }
+      if (!token) {
+        console.error("NO TOKEN");
+        return;
+      }
+    
+      try {
+        const campaignIds = [14];
+        const fetchedCampaigns = await Promise.all(
+          campaignIds.map((id) => getCampaignDetails(id, token))
+        );
+        console.log("Fetched Campaign Details:", fetchedCampaigns);
+        setCampaigns(fetchedCampaigns);
+      } catch (error) {
+        console.error("Error fetching campaigns:", error.message);
       }
     };
 
