@@ -21,7 +21,7 @@ export const loginUser = async (credentials) => {
 };
 
 export const getUserDetails = async (token) => {
-  const response = await fetch(`${APIURL}/users`, {
+  const response = await fetch(`${APIURL}/user`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
@@ -32,7 +32,7 @@ export const getUserDetails = async (token) => {
 };
 
 export const getCampaigns = async (token) => {
-  const response = await fetch(`${APIURL}/campaigns`, {
+  const response = await fetch(`${APIURL}/campaign`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
@@ -43,13 +43,19 @@ export const getCampaigns = async (token) => {
 };
 
 export const getCampaignDetails = async (campaignId, token) => {
-  const response = await fetch(`${APIURL}/campaigns/${campaignId}`, {
+  console.log("Campaign ID:", campaignId);
+  console.log("Token:", token);
+
+  const response = await fetch(`${APIURL}/campaign/${campaignId}`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     },
   });
+
   const campaignDetailsJson = await response.json();
+  console.log("Campaign Details Response:", campaignDetailsJson);
+
   return campaignDetailsJson;
 };
 

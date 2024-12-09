@@ -14,9 +14,9 @@ app.use(require("./API/auth.cjs").router);
 app.use("/user", userRoutes)
 app.use("/campaign", campaignRoutes)
 
-app.get('/test', (req, res,next) => {
-  res.json('test works')
-})
+// app.get('/test', (req, res,next) => {
+//   res.json('test works')
+// })
 
 app.use((req, res, next) => {
   next({ status: 404, message: "Endpoint not found." });
