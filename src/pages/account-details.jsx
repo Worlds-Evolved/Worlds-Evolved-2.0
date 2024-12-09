@@ -73,6 +73,11 @@ const AccountPage = () => {
     }
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewCampaignData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div className="account-page">
       <div className="account-container">
@@ -82,6 +87,42 @@ const AccountPage = () => {
           <div class ="user-info">
             <p><strong>Username:</strong> {userDetails.username}</p>
             <p><strong>Email:</strong> {userDetails.email}</p>
+            <h2>Create Campaign</h2>
+            <form onSubmit={handleCreateCampaign} className="create-campaign-form">
+              <div>
+                <label htmlFor="title">Title</label>
+                <input
+                  id="title"
+                  name="title"
+                  type="text"
+                  value={newCampaignData.title}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="description">Description</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  value={newCampaignData.description}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="playerIds">Player IDs (comma-separated)</label>
+                <input
+                  id="playerIds"
+                  name="playerIds"
+                  type="text"
+                  value={newCampaignData.playerIds}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <button type="submit">Create Campaign</button>
+            </form>
           </div>
         ) : (
           <p>Failed to load user details.</p>
