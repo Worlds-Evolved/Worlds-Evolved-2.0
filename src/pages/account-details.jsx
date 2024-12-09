@@ -11,6 +11,11 @@ const AccountPage = () => {
     description: "",
     playerIds: "",
   });
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
   const [passwordError, setPasswordError] = useState("");
   const [passwordSuccess, setPasswordSuccess] = useState("");
   const token = localStorage.getItem("token");
@@ -50,6 +55,28 @@ const AccountPage = () => {
     fetchCampaigns();
   }, [token]);
 
+  const handlePasswordChange = async (e) => {
+    e.preventDefault();
+    if (!token) return;
+
+    const { currentPassword, newPassword, confirmPassword } = passwordData;
+
+    if (newPassword !== confirmPassword) {
+      setPasswordError("New passwords do not match.");
+      return;
+    }
+
+    try {
+      await changePassword({ currentPassword, newPassword }, token);
+      setPasswordSuccess("Password successfully changed.");
+      setPasswordError("");
+      setPasswordData({ currentPassword: "", newPassword: "", confirmPassword: "" });
+    } catch (error) {
+      console.error("Error changing password:", error.message);
+      setPasswordError(error.response?.data?.error || "Failed to change password.");
+    }
+  };
+
   const handleCreateCampaign = async (e) => {
     e.preventDefault();
     if (!token) return;
@@ -78,6 +105,11 @@ const AccountPage = () => {
     setNewCampaignData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handlePasswordInputChange = (e) => {
+    const { name, value } = e.target;
+    setPasswordData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div className="account-page">
       <div className="account-container">
@@ -87,6 +119,47 @@ const AccountPage = () => {
           <div class ="user-info">
             <p><strong>Username:</strong> {userDetails.username}</p>
             <p><strong>Email:</strong> {userDetails.email}</p>
+            
+            <h2>Change Password</h2>
+            {passwordError && <p className="error">{passwordError}</p>}
+            {passwordSuccess && <p className="success">{passwordSuccess}</p>}
+            <form onSubmit={handlePasswordChange} className="password-change-form">
+              <div>
+                <label htmlFor="currentPassword">Current Password</label>
+                <input
+                  id="currentPassword"
+                  name="currentPassword"
+                  type="password"
+                  value={passwordData.currentPassword}
+                  onChange={handlePasswordInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="newPassword">New Password</label>
+                <input
+                  id="newPassword"
+                  name="newPassword"
+                  type="password"
+                  value={passwordData.newPassword}
+                  onChange={handlePasswordInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="confirmPassword">Confirm New Password</label>
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  value={passwordData.confirmPassword}
+                  onChange={handlePasswordInputChange}
+                  required
+                />
+              </div>
+              <button type="submit">Change Password</button>
+            </form>
+            
             <h2>Create Campaign</h2>
             <form onSubmit={handleCreateCampaign} className="create-campaign-form">
               <div>
