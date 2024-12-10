@@ -22,3 +22,31 @@ const authenticateToken = async (req, res, next) => {
     next({ status: 401, message: "You're not logged in" });
   }
 }
+
+router.post('/', authenticateToken, async (req, res, next) => {
+  const { currentPassword, newPassword } = req.body;
+  if(!req.user){
+    return res.status(401).json({ error: "Please log in" });
+  }
+
+  try {
+    const user = req.user
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if(!isMatch){
+      return res.status(400).json({ error: "Inccorect Password" });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { password: hashedPassword },
+    });
+
+    res.json({ message: "Password has been change" })
+  } catch (error) {
+    next(error);
+  }
+})
+
+module.exports = router;
