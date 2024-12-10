@@ -32,7 +32,7 @@ export const getUserDetails = async (token) => {
 };
 
 export const changePassword = async (passwordData, token) => {
-  const response = await fetch(`${APIURL}/user/change-password`, {
+  const response = await fetch(`${APIURL}/change-password`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

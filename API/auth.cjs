@@ -25,7 +25,6 @@ router.use(async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    console.error(message);
     next({ status: 401, message: `You're not logged in` })
   }
 });
