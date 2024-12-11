@@ -3,9 +3,9 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-  "email": "devin@matt.com",
-  "username": "devlight",
-  "password": "testpassword"
+  "email": "mk@matt.com",
+  "username": "mk",
+  "password": "mk"
 }
 
 ### User Login
@@ -45,4 +45,18 @@ Authorization: Bearer {{token}}
 
 ### Remove player from game
 DELETE http://localhost:3000/campaign/13/players/7
+Authorization: Bearer {{token}}
+
+### Make a new note
+POST http://localhost:3000/notes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "content": "This is a new note for the campaign",
+  "campaignId": 1
+}
+
+### get notes bu id
+GET http://localhost:3000/notes/1
 Authorization: Bearer {{token}}
