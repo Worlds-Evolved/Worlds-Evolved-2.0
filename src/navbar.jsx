@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 const NavBar = () => {
   return(
-    <nav class ="parchment-nav">
+    <nav className ="parchment-nav">
 
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>

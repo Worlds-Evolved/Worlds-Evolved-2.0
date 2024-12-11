@@ -22,9 +22,7 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/register" element={<Register />} />
-        <Route path="/api-test" element={<ApiTest />} />
         <Route path="/login" element={<Login setToken={setToken}/>} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/dmhub" element={<DmHub token={token}/>} />
