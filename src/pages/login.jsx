@@ -1,10 +1,12 @@
 import React from "react"
 import { useState } from "react"
 import { loginUser } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -15,6 +17,7 @@ const Login = () => {
       if (response.token) {
         console.log('Token:', response.token);
         localStorage.setItem('token', response.token);
+        navigate('/account');
       } else {
         console.log('Login failed');
       }
