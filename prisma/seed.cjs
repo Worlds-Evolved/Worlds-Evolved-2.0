@@ -18,7 +18,7 @@ async function main() {
 
   // Create 10 campaigns
   for (let i = 0; i < 10; i++) {
-    // Select a random user as Game Master
+    // Ensure gameMaster is defined here, within the loop
     const gameMaster = users[Math.floor(Math.random() * users.length)];
 
     // Select random players (up to 5, excluding the Game Master)
@@ -38,11 +38,26 @@ async function main() {
     });
 
     // Add interactive maps to the campaign
-    for (let j = 0; j < 3; j++) { // Each campaign has 3 maps
+    // Each campaign has 3 maps
+    for (let j = 0; j < 3; j++) { 
       await prisma.interactiveMap.create({
         data: {
           title: faker.lorem.words(3),
           imageUrl: faker.image.imageUrl(),
+          campaignId: campaign.id,
+        },
+      });
+    }
+
+    // Add notes for the campaign
+    // Each campaign gets 10 notes
+    for (let k = 0; k < 10; k++) { 
+      const randomUser = [gameMaster, ...players][Math.floor(Math.random() * (players.length + 1))];
+
+      await prisma.note.create({
+        data: {
+          content: faker.lorem.sentences(3),
+          userId: randomUser.id,
           campaignId: campaign.id,
         },
       });
