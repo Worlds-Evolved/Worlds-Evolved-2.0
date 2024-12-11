@@ -28,7 +28,6 @@ export const getUserDetails = async (token) => {
     },
   });
   const detailsJson = await response.json();
-  console.log(detailsJson)
   return detailsJson;
 };
 

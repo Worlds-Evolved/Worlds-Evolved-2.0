@@ -1,67 +1,83 @@
 import React, { useEffect, useState } from "react";
 import { getCampaignDetails, getUserDetails } from "../api/api";
 
+
+
 const DmHub = () => {
 
 
   const [userDetails, setUserDetails] = useState(null);
-  console.log(userDetails)
-  const [campaignDetails, setcampaignDetails] = useState([]);
-
-
+  // console.log(userDetails)
+  const [campaignDetails, setCampaignDetails] = useState([]);
+  const [players, setPlayers] = useState([]);
+  const [allPlayers, setAllPlayers] = useState([])
+  const [ulElement, setUlElement] = useState(null)
+  
   const token = localStorage.getItem('token');
   if (!token) return;
 
   useEffect(() => {
-    console.log(`hello`);
 
     const fetchUserDetails = async () => {
-    if (token) {
-      try {
-        const res = await getUserDetails(token);
-        setUserDetails(res);
-        console.log(userDetails)
-      } catch (error) {
-        console.error("Error fetching user details:", error);
+      if (token) {
+        try {
+          const res = await getUserDetails(token);
+          setUserDetails(res);
+        } catch (error) {
+          console.error("Error fetching user details:", error);
 
-      }
-    };}
+        }
+      };
+    }
 
     const fetchCampaignDetails = async () => {
       try {
 
-        const campaignDetails = await getCampaignDetails(11, token)
-        
-        console.log(campaignDetails)
-        setcampaignDetails(campaignDetails)
+        const campaignDetails = await getCampaignDetails(11, token);
+        setCampaignDetails(campaignDetails)
+        const players = campaignDetails.players;
+        setPlayers(players);
+      
+        const allPlayers = [];
+
+        for (let i = 0; i < players.length; i++) {
+          if (players[i].username) {
+            allPlayers.push(players[i].username);
+            setAllPlayers(allPlayers)
+          }
+        }
+
+        const ulElement = document.createElement('ul');
+
+        for (let i = 0; i < allPlayers.length; i++) {
+          const liElement = document.createElement('li');
+          liElement.textContent = allPlayers[i]; // Set the text content of <li>
+
+          ulElement.appendChild(liElement);
+        }
+        setUlElement(ulElement);
       }
 
       catch (error) {
         console.error("Error fetching campaign details:", error);
-       }  getCampaignDetails(campaignId, token);
-        setcampaignDetails(campaignDetails);
-     };
+      } getCampaignDetails(campaignId, token);
+        setCampaignDetails(campaignDetails);
 
-     console.log(campaignDetails)
+    };
+
 
     fetchUserDetails();
-   fetchCampaignDetails();
+    fetchCampaignDetails();
 
 
 
   }, [token]);
-  const players = campaignDetails.players 
-
-  console.log(players)
-// const player1 = players[1]
-console.log(typeof players)
 
   return (
     <div className="dm-hub-page">
       <div className="dm-hub-container">
         <h1>Dungeon Master's Hub</h1>
 
-        {console.log(players)}
 
         <div>
           <div>
@@ -69,11 +85,15 @@ console.log(typeof players)
             <h3> Welcome to {campaignDetails?.title}! Hosted by {userDetails?.username}</h3>
           </div>
 
-          {/* <h4>{campaignDetails.players[1]}</h4>  */}
+          <h4>players: {allPlayers}</h4>
+
+{/* this is where I am trying to pul the UL with all the players in it to replace above line of code.
+          {ulElement}
+          {console.log(ulElement)} */}
 
           <button>Invite</button>
           <button>Add Note</button>
-          {/* <p>{campaignDetails.description}</p> */}
+          <p>{campaignDetails.description}</p>
         </div>
       </div>
     </div>
