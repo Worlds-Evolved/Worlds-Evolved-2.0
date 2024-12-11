@@ -40,24 +40,23 @@ const PlayerHub = () => {
 
   if (campaignDetails.length === 0) {
     return <p>Loading</p>
-}
+  }
   return (
     <div className="dm-hub-page">
       <div className="dm-hub-container">
-        <h1>Dungeon Master's Hub</h1>
+        <h1>{userDetails?.username}'s Hub</h1>
 
 
         <div>
           <div>
 
-            <h3> Welcome to {campaignDetails?.title}! Hosted by {userDetails?.username}</h3>
+            <h3> Welcome to {campaignDetails?.title}! Hosted by {campaignDetails?.gameMaster.username}</h3>
           </div>
 
     <h4>Players</h4>
     {campaignDetails?.players.map(player => {
       return <li>{player.username}</li>
     })}
-          <button>Invite</button>
           <button>Add Note</button>
           <p>{campaignDetails.description}</p>
         </div>
