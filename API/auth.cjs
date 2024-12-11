@@ -12,12 +12,14 @@ function createToken(userId) {
 
 router.use(async (req, res, next) => {
   const authHeader = req.headers.authorization;
+  console.log("AUTH HEADER:", authHeader);
   const token = authHeader?.slice(7);
-  console.log("TOKEN",token)
+  console.log("TOKEN", token);
   if (!token) return next();
   
   try {
     const { id } = jwt.verify(token, JWT_SECRET);
+    console.log("Decoded Token ID:", id);
     const user = await prisma.user.findUniqueOrThrow({ where: { id }});
     console.log("USER", user)
     req.user = user;

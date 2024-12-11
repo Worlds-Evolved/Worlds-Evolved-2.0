@@ -31,6 +31,21 @@ export const getUserDetails = async (token) => {
   return detailsJson;
 };
 
+export const changePassword = async (passwordData, token) => {
+  const response = await fetch(`${APIURL}/change-password`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(passwordData),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to change password.");
+  }
+  return response.json();
+};
+
 export const getCampaigns = async (token) => {
   const response = await fetch(`${APIURL}/campaign`, {
     headers: {
@@ -43,13 +58,17 @@ export const getCampaigns = async (token) => {
 };
 
 export const getCampaignDetails = async (campaignId, token) => {
+
   const response = await fetch(`${APIURL}/campaign/${campaignId}`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     },
   });
+
   const campaignDetailsJson = await response.json();
+  console.log("Campaign Details Response:", campaignDetailsJson);
+
   return campaignDetailsJson;
 };
 
@@ -126,3 +145,4 @@ export const updateInteractiveMap = async (mapId, mapData, token) => {
   const updatedMapJson = await response.json();
   return updatedMapJson;
 };
+
