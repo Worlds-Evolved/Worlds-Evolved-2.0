@@ -5,6 +5,7 @@ const userRoutes = require('./API/users.cjs')
 const campaignRoutes = require('./API/campaigns.cjs')
 const PORT = process.env.PORT || 3000;
 const changePasswordRoutes = require('./API/change-password.cjs')
+const notesRoute = require('./API/notes.cjs')
 
 app.use(cors())
 app.use(require("morgan")("dev"));
@@ -14,6 +15,7 @@ app.use(require("./API/auth.cjs").router);
 app.use("/user", userRoutes);
 app.use("/campaign", campaignRoutes);
 app.use("/change-password", changePasswordRoutes);
+app.use("/notes", notesRoute);
 
 // app.get('/test', (req, res,next) => {
 //   res.json('test works')

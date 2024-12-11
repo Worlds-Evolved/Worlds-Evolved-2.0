@@ -19,7 +19,8 @@ model User {
   email        String      @unique
   password     String
   campaigns    Campaign[]  @relation("UserCampaigns") 
-  campaignsAsGM Campaign[] @relation("GameMasterCampaign") 
+  campaignsAsGM Campaign[] @relation("GameMasterCampaign")
+  notes          Note[]  
 }
 
 model Campaign {
@@ -30,6 +31,7 @@ model Campaign {
   gameMasterId   Int
   players        User[]           @relation("UserCampaigns") 
   interactiveMaps InteractiveMap[]
+  notes          Note[] 
 }
 
 model InteractiveMap {
@@ -40,3 +42,11 @@ model InteractiveMap {
   campaignId  Int
 }
 
+model Note {
+  id          Int        @id @default(autoincrement())
+  content     String
+  user        User       @relation(fields: [userId], references: [id])
+  userId      Int
+  campaign    Campaign   @relation(fields: [campaignId], references: [id])
+  campaignId  Int
+}
