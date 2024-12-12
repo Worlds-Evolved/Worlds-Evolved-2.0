@@ -1,28 +1,28 @@
 import React from "react";
 import HomeMap from "../components/HomePageMap";
+import './home.css'
 
 const Home = () => {
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
+    <div className="home-container">
       <img
         src="https://d.img.vision/capstone/logo_-_transparent_background.png"
         alt="Worlds Evolved Logo"
-        style={{
-          height: "22vh",
-          width: "auto",
-          marginBottom: "1vh",
-        }}
+        className="logo"
       />
 
       <h1>Worlds Evolved</h1>
       <h2>Bring your world to life</h2>
+
       <div>
-        <p>
-          An innovative platform designed to transform how Dungeon Masters (DMs)
-          and players interact with their game worlds.
-        </p>
-        <div>
-          <div>
+        <div className="row">
+          <div className="text-container">
+            <p>
+              An innovative platform designed to transform how Dungeon Masters (DMs)
+              and players interact with their game worlds.
+            </p>
+          </div>
+          <div className="iframe-container">
             <iframe
               width="560"
               height="315"
@@ -32,16 +32,23 @@ const Home = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <div>
+        </div>
+
+        <div className="row">
+          <div className="iframe-container map">
+            <HomeMap />
+          </div>
+          <div className="text-container">
             <p>Integrate interactive maps and collaborative storytelling</p>
           </div>
         </div>
-        <div>
-          <div>
-            <p><HomeMap /></p>
+
+        <div className="row">
+          <div className="text-container">
+            <p>Image/Video: Interactive maps and storytelling</p>
           </div>
-          <div>
-          <iframe
+          <div className="iframe-container">
+            <iframe
               width="560"
               height="315"
               src="https://www.youtube.com/embed/2MYjg0IuYpA?start=7235&end=7320&autoplay=1&mute=1&loop=1&playlist=2MYjg0IuYpA"
@@ -51,13 +58,19 @@ const Home = () => {
             ></iframe>
           </div>
         </div>
-        <p>
-          Connect players with the history, events, and mysteries that shape
-          their journey all in one centralized hub.
-        </p>
+
+        <div className="row">
+          <div className="text-container">
+            <p>
+              Connect players with the history, events, and mysteries that shape
+              their journey all in one centralized hub.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
 
 export default Home;
