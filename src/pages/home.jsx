@@ -1,4 +1,5 @@
 import React from "react";
+import HomeMap from "../components/HomePageMap";
 
 const Home = () => {
   return (
@@ -7,12 +8,12 @@ const Home = () => {
         src="https://d.img.vision/capstone/logo_-_transparent_background.png"
         alt="Worlds Evolved Logo"
         style={{
-          height: "22vh", 
-          width: "auto", 
+          height: "22vh",
+          width: "auto",
           marginBottom: "1vh",
         }}
       />
-      
+
       <h1>Worlds Evolved</h1>
       <h2>Bring your world to life</h2>
       <div>
@@ -22,7 +23,14 @@ const Home = () => {
         </p>
         <div>
           <div>
-            <p>Image/Video: DM and player interaction</p>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/oNyrkW3EN5I?start=6510&end=6650&autoplay=1&mute=1&loop=1&playlist=oNyrkW3EN5I"
+              title="Worlds Evolved Introduction"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
           <div>
             <p>Integrate interactive maps and collaborative storytelling</p>
