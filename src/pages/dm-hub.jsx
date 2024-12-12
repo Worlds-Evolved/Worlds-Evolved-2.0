@@ -43,23 +43,28 @@ const DmHub = () => {
     return <p>Loading</p>
 }
 return (
-  <div>
+  <div className="dm-hub-page">
     <div className="dm-hub-container">
       <h1>Dungeon Master's Hub</h1>
       <h3>Welcome to {campaignDetails?.title}! Hosted by {userDetails?.username}</h3>
-      <h4>Players</h4>
-      <ul>
-        {campaignDetails?.players.map(player => (
-          <li key={player.id}>{player.username}</li>
-        ))}
-      </ul>
-      <button>Invite</button>
-      <button>Add Note</button>
-      <p>{campaignDetails.description}</p>
-    </div>
+      
+      <div className="content-wrapper">
+        <div className="player-list">
+          <h4>Players</h4>
+          <ul>
+            {campaignDetails?.players.map(player => (
+              <li key={player.id}>{player.username}</li>
+            ))}
+          </ul>
+          <button>Invite</button>
+          <button>Add Note</button>
+          <p>{campaignDetails.description}</p>
+        </div>
 
-    <div className="map-position">
-      <MyMap />
+        <div className="map-position">
+          <MyMap />
+        </div>
+      </div>
     </div>
   </div>
 );
