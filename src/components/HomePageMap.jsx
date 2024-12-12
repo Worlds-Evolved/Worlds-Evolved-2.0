@@ -14,7 +14,7 @@ const HomeMap = () => {
   ];
   
   return (
-    <div className="map-container">
+    <div className="home-map-container">
       <MapContainer
         crs={L.CRS.Simple}
         bounds={bounds}

@@ -9,6 +9,7 @@ import DmHub from "./pages/dm-hub";
 import MyMap from "./components/mymap";
 import './App.css'
 import PlayerHub from "./pages/player-hub";
+import HomeMap from "./components/HomePageMap";
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/dmhub" element={<DmHub token={token}/>} />
         <Route path="/mymap" element={<MyMap />} />
+        <Route path="/homemap" element={<HomeMap />} />
         <Route path="/playerhub" element={<PlayerHub />} />
       </Routes>
     </>
