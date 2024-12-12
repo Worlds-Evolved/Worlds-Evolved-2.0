@@ -10,9 +10,9 @@ const NavBar = () => {
 
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        {!isLoggedIn && <Link to="/register">Register</Link>}
         {isLoggedIn && <Link to="/account">Account</Link>}
-        <Link to="/dmhub">Dm Hub</Link>
+        {isLoggedIn && <Link to="/dmhub">Dm Hub</Link>}
     </nav>
   )
 }
