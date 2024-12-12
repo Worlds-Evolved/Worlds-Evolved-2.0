@@ -146,3 +146,18 @@ export const updateInteractiveMap = async (mapId, mapData, token) => {
   return updatedMapJson;
 };
 
+
+
+export const createNote = async (noteData, token) => {
+  const response = await fetch(`${APIURL}/notes`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(noteData),
+  });
+  const newCampaignJson = await response.json();
+  return newCampaignJson;
+};
+
