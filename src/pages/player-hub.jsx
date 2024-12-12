@@ -5,8 +5,12 @@ const PlayerHub = () => {
 
   const [userDetails, setUserDetails] = useState(null);
   const [campaignDetails, setCampaignDetails] = useState([]);
-  console.log(campaignDetails);
-  
+  const [newNoteData, setNewNoteData] = useState({
+    content: "",
+    userId: "",
+    campaignId: "",
+  });
+
   const token = localStorage.getItem('token');
   if (!token) return;
 
@@ -38,6 +42,38 @@ const PlayerHub = () => {
   }, [token]);
 
 
+
+    const handleCreateNote = async (e) => {
+      e.preventDefault();
+      if (!token) return;
+
+      const playerIdsArray = newCampaignData.playerIds
+        .split(",")
+        .map((id) => +id.trim());
+
+      try {
+        const noteData = {
+          content: newnoteData.content,
+          userId: userDetails.id,
+          campaignId: campaignDetails.id,
+        };
+
+        const newNote = await createNote (noteData, token);
+        console.log("Note created:", newNote);
+      } catch (error) {
+        console.error("Error creating note:", error.response?.data?.error || "Failed to create note");
+      }
+    };
+
+    const handleChange = (e) => {
+      const { content, value } = e.target;
+      setNewNoteData((prev) => ({ ...prev, [content]: value }));
+    };
+
+
+
+
+
   if (campaignDetails.length === 0) {
     return <p>Loading</p>
   }
@@ -53,11 +89,30 @@ const PlayerHub = () => {
             <h3> Welcome to {campaignDetails?.title}! Hosted by {campaignDetails?.gameMaster.username}</h3>
           </div>
 
-    <h4>Players</h4>
-    {campaignDetails?.players.map(player => {
-      return <li>{player.username}</li>
-    })}
+          <h4>Players</h4>
+          {campaignDetails?.players.map(player => {
+            return <li>{player.username}</li>
+          })}
           <button>Add Note</button>
+          <h2>Add note</h2>
+            <form onSubmit={handleCreateNote} className="create-note-form">
+              <div>
+                <label>Type note here</label>
+                <input
+                  id="content"
+                  name="content"
+                  type="text"
+                  value={newNoteData.title}
+                  onChange={handleChange}
+                  required
+                />
+              </div>             
+              <button type="submit">Create note</button>
+            </form>
+          
+          
+          
+          
           <p>{campaignDetails.description}</p>
         </div>
       </div>
