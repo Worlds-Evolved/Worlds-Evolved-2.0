@@ -41,7 +41,14 @@ const Home = () => {
             <p><HomeMap /></p>
           </div>
           <div>
-            <p>Image/Video: Storytelling</p>
+          <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/2MYjg0IuYpA?start=7235&end=7320&autoplay=1&mute=1&loop=1&playlist=2MYjg0IuYpA"
+              title="Worlds Evolved Introduction"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
         <p>
