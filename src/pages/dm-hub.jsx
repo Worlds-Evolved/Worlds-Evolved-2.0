@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getCampaignDetails, getUserDetails } from "../api/api";
+import MyMap from "../components/mymap";
 
 const DmHub = () => {
 
@@ -41,30 +42,26 @@ const DmHub = () => {
   if (campaignDetails.length === 0) {
     return <p>Loading</p>
 }
-  return (
-    <div className="dm-hub-page">
-      <div className="dm-hub-container">
-        <h1>Dungeon Master's Hub</h1>
-
-
-        <div>
-          <div>
-
-            <h3> Welcome to {campaignDetails?.title}! Hosted by {userDetails?.username}</h3>
-          </div>
-
-    <h4>Players</h4>
-    {campaignDetails?.players.map(player => {
-      return <li>{player.username}</li>
-    })}
-          <button>Invite</button>
-          <button>Add Note</button>
-          <p>{campaignDetails.description}</p>
-        </div>
-      </div>
+return (
+  <div>
+    <div className="dm-hub-container">
+      <h1>Dungeon Master's Hub</h1>
+      <h3>Welcome to {campaignDetails?.title}! Hosted by {userDetails?.username}</h3>
+      <h4>Players</h4>
+      <ul>
+        {campaignDetails?.players.map(player => (
+          <li key={player.id}>{player.username}</li>
+        ))}
+      </ul>
+      <button>Invite</button>
+      <button>Add Note</button>
+      <p>{campaignDetails.description}</p>
     </div>
 
-  );
-
-};
+    <div className="map-position">
+      <MyMap />
+    </div>
+  </div>
+);
+}
 export default DmHub;
