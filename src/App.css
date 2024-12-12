@@ -1,4 +1,4 @@
-/* .map-container {
+.home-map-container {
   width: 80%;
   height: 500px; 
   margin: 0;
@@ -6,7 +6,7 @@
   border: 2px solid #ccc;
   border-radius: 100px;
   overflow: hidden;
-} */
+}
 
 .leaflet-container {
   height: 100%;
@@ -77,3 +77,4 @@
   border-radius: 10px;
   overflow: hidden;
 }
+
