@@ -8,7 +8,7 @@ router.get("/", authenticate, async (req, res, next) => {
   try {
     const user = await prisma.user.findUnique({
       where: { id: req.user.id },
-      include: { campaigns: true, campaignsAsGM: true ,notes: true,},
+      include: { campaigns: true, campaignsAsGM: true, notes: true,},
     });
 
     const campaigns = user.campaigns.length > 0 ? user.campaigns : false;
