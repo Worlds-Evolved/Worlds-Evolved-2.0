@@ -67,7 +67,6 @@ export const getCampaignDetails = async (campaignId, token) => {
   });
 
   const campaignDetailsJson = await response.json();
-  console.log("Campaign Details Response:", campaignDetailsJson);
 
   return campaignDetailsJson;
 };
@@ -157,7 +156,10 @@ export const createNote = async (noteData, token) => {
     },
     body: JSON.stringify(noteData),
   });
-  const newCampaignJson = await response.json();
-  return newCampaignJson;
+  const newNoteJson = await response.json();
+  return newNoteJson;
 };
+
+
+
 

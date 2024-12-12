@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCampaignDetails, getUserDetails } from "../api/api";
+import { getCampaignDetails, getUserDetails, createNote } from "../api/api";
 
 const PlayerHub = () => {
 
@@ -30,7 +30,7 @@ const PlayerHub = () => {
 
     const fetchCampaignDetails = async () => {
       try {
-        const campaignDetails = await getCampaignDetails(11, token);
+        const campaignDetails = await getCampaignDetails(10, token);
         setCampaignDetails(campaignDetails)
       }
       catch (error) {
@@ -43,33 +43,31 @@ const PlayerHub = () => {
 
 
 
-    const handleCreateNote = async (e) => {
-      e.preventDefault();
-      if (!token) return;
+  const handleCreateNote = async (e) => {
+    e.preventDefault();
+    if (!token) return;
 
-      const playerIdsArray = newCampaignData.playerIds
-        .split(",")
-        .map((id) => +id.trim());
 
-      try {
-        const noteData = {
-          content: newnoteData.content,
-          userId: userDetails.id,
-          campaignId: campaignDetails.id,
-        };
+    try {
+      const noteData = {
+        content: newNoteData.content,
+        userId: userDetails.id,
+        campaignId: campaignDetails.id,
+      };
 
-        const newNote = await createNote (noteData, token);
-        console.log("Note created:", newNote);
-      } catch (error) {
-        console.error("Error creating note:", error.response?.data?.error || "Failed to create note");
-      }
-    };
+      const newNote = await createNote(noteData, token);
+      console.log("Note created:", newNote);
+    } catch (error) {
+      console.error("Error creating note:", error.response?.data?.error || "Failed to create note");
+    }
+    location.reload();
+  };
 
-    const handleChange = (e) => {
-      const { content, value } = e.target;
-      setNewNoteData((prev) => ({ ...prev, [content]: value }));
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewNoteData((prev) => ({ ...prev, [name]: value }));
 
+  };
 
 
 
@@ -93,26 +91,34 @@ const PlayerHub = () => {
           {campaignDetails?.players.map(player => {
             return <li>{player.username}</li>
           })}
-          <button>Add Note</button>
-          <h2>Add note</h2>
-            <form onSubmit={handleCreateNote} className="create-note-form">
-              <div>
-                <label>Type note here</label>
-                <input
-                  id="content"
-                  name="content"
-                  type="text"
-                  value={newNoteData.title}
-                  onChange={handleChange}
-                  required
-                />
-              </div>             
-              <button type="submit">Create note</button>
-            </form>
-          
-          
-          
-          
+
+          <h4>My Notes</h4>
+          <ol>
+            {userDetails?.notes.map(note => {
+              return <li>{note.content}</li>
+            })}
+          </ol>
+
+
+          <h4>Add note</h4>
+          <form onSubmit={handleCreateNote} className="create-note-form">
+            <div>
+              <label>Type note here</label>
+              <input
+                id="content"
+                name="content"
+                type="text"
+                value={newNoteData.content}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit">Create note</button>
+          </form>
+
+
+
+
           <p>{campaignDetails.description}</p>
         </div>
       </div>
