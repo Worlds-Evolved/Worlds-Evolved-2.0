@@ -38,7 +38,7 @@ const Home = () => {
         </div>
         <div>
           <div>
-            <p>Image/Video: Interactive maps</p>
+            <p><HomeMap /></p>
           </div>
           <div>
             <p>Image/Video: Storytelling</p>
