@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getCampaignDetails, getUserDetails, createNote } from "../api/api";
+import MyMap from "../components/mymap";
 
 const PlayerHub = () => {
 
@@ -109,6 +110,9 @@ const PlayerHub = () => {
             <button type="submit">Create note</button>
           </form>
           <p>{campaignDetails.description}</p>
+          <div className="map-position">
+          <MyMap />
+        </div>
         </div>
       </div>
     </div>
