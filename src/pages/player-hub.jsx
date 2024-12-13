@@ -41,8 +41,6 @@ const PlayerHub = () => {
     fetchCampaignDetails();
   }, [token]);
 
-
-
   const handleCreateNote = async (e) => {
     e.preventDefault();
     if (!token) return;
@@ -69,16 +67,13 @@ const PlayerHub = () => {
 
   };
 
-
-
-
   if (campaignDetails.length === 0) {
     return <p>Loading</p>
   }
   return (
     <div className="dm-hub-page">
       <div className="dm-hub-container">
-        <h1>{userDetails?.username}'s Hub</h1>
+        <h1>{userDetails?.username}'s  Player Hub</h1>
 
 
         <div>
@@ -98,8 +93,6 @@ const PlayerHub = () => {
               return <li>{note.content}</li>
             })}
           </ol>
-
-
           <h4>Add note</h4>
           <form onSubmit={handleCreateNote} className="create-note-form">
             <div>
@@ -115,10 +108,6 @@ const PlayerHub = () => {
             </div>
             <button type="submit">Create note</button>
           </form>
-
-
-
-
           <p>{campaignDetails.description}</p>
         </div>
       </div>

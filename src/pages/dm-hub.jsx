@@ -94,7 +94,21 @@ return (
           </ol>
           <p>{campaignDetails.description}</p>
         </div>
-
+        <h4>Add note</h4>
+          <form onSubmit={handleCreateNote} className="create-note-form">
+            <div>
+              <label>Type note here</label>
+              <input
+                id="content"
+                name="content"
+                type="text"
+                value={newNoteData.content}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit">Create note</button>
+          </form>
         <div className="map-position">
           <MyMap />
         </div>
