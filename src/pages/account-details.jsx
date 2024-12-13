@@ -40,7 +40,7 @@ const AccountPage = () => {
       }
     
       try {
-        const campaignIds = [14];
+        const campaignIds = [11];
         const fetchedCampaigns = await Promise.all(
           campaignIds.map((id) => getCampaignDetails(id, token))
         );

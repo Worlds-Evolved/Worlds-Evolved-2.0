@@ -18,6 +18,7 @@ model User {
   username     String      @unique
   email        String      @unique
   password     String
+  role         Role        @default(USER)
   campaigns    Campaign[]  @relation("UserCampaigns") 
   campaignsAsGM Campaign[] @relation("GameMasterCampaign")
   notes          Note[]  
@@ -49,4 +50,9 @@ model Note {
   userId      Int
   campaign    Campaign   @relation(fields: [campaignId], references: [id])
   campaignId  Int
+}
+
+enum Role { 
+  USER
+  ADMIN
 }
