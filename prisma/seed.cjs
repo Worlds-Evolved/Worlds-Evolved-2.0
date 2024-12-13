@@ -3,6 +3,18 @@ const prisma = new PrismaClient();
 const faker = require("faker");
 
 async function main() {
+  
+  const admin = await prisma.user.create({
+    data: {
+      username: "admin",
+      email: "admin@admin.com",
+      password: "admin",
+      role: "ADMIN", 
+    },
+  });
+
+  console.log("Admin user created:", admin);
+  
   // Create 50 users
   const users = await Promise.all(
     Array.from({ length: 50 }).map(() =>
