@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { getCampaignDetails, getUserDetails } from "../api/api";
+import { getCampaignDetails, getUserDetails, createNote } from "../api/api";
 import MyMap from "../components/mymap";
 
 const DmHub = () => {
 
   const [userDetails, setUserDetails] = useState(null);
   const [campaignDetails, setCampaignDetails] = useState([]);
-  console.log(campaignDetails);
+  const [newNoteData, setNewNoteData] = useState({
+    content: "",
+    userId: "",
+    campaignId: "",
+  });
   
   const token = localStorage.getItem('token');
   if (!token) return;
@@ -38,6 +42,31 @@ const DmHub = () => {
     fetchCampaignDetails();
   }, [token]);
 
+  const handleCreateNote = async (e) => {
+    e.preventDefault();
+    if (!token) return;
+
+
+    try {
+      const noteData = {
+        content: newNoteData.content,
+        userId: userDetails.id,
+        campaignId: campaignDetails.id,
+      };
+
+      const newNote = await createNote(noteData, token);
+      console.log("Note created:", newNote);
+    } catch (error) {
+      console.error("Error creating note:", error.response?.data?.error || "Failed to create note");
+    }
+    location.reload();
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewNoteData((prev) => ({ ...prev, [name]: value }));
+
+  };
 
   if (campaignDetails.length === 0) {
     return <p>Loading</p>
@@ -57,7 +86,12 @@ return (
             ))}
           </ul>
           <button>Invite</button>
-          <button>Add Note</button>
+          <h4>My Notes</h4>
+          <ol>
+            {userDetails?.notes.map(note => {
+              return <li>{note.content}</li>
+            })}
+          </ol>
           <p>{campaignDetails.description}</p>
         </div>
 
