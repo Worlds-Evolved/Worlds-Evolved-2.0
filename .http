@@ -14,8 +14,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "username": "mk",
-  "password": "mk"
+  "username": "admin",
+  "password": "admin"
 }
 
 ### Get user information
@@ -59,4 +59,8 @@ Authorization: Bearer {{token}}
 
 ### get notes by id
 GET http://localhost:3000/notes/1
+Authorization: Bearer {{token}}
+
+### Test Admin Backend
+GET http://localhost:3000/admin/test
 Authorization: Bearer {{token}}
