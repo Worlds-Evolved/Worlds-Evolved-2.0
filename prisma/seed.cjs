@@ -1,16 +1,30 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const faker = require("faker");
+const bcrypt = require('bcrypt')
 
 async function main() {
+  const adminPasswordHash = await bcrypt.hash('admin', 10);
+
+  const admin = await prisma.user.create({
+    data: {
+      username: "admin",
+      email: "admin@admin.com",
+      password: adminPasswordHash,
+      role: "ADMIN", 
+    },
+  });
+
+  console.log("Admin user created:", admin);
+  
   // Create 50 users
   const users = await Promise.all(
     Array.from({ length: 50 }).map(() =>
       prisma.user.create({
         data: {
-          username: faker.internet.userName(),
+          username: faker.internet.userName(), 
           email: faker.internet.email(),
-          password: faker.internet.password(),
+          password: faker.internet.password(), 
         },
       })
     )
