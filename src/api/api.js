@@ -160,6 +160,20 @@ export const createNote = async (noteData, token) => {
   return newNoteJson;
 };
 
+export const getAdminDashboard = async (token) => {
+  const response = await fetch(`${APIURL}/admin/dashboard`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+  });
 
+  if (!response.ok) {
+    throw new Error("Failed to fetch admin dashboard.");
+  }
+
+  const dashboardData = await response.json();
+  return dashboardData;
+};
 
 
