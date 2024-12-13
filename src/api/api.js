@@ -67,7 +67,6 @@ export const getCampaignDetails = async (campaignId, token) => {
   });
 
   const campaignDetailsJson = await response.json();
-  console.log("Campaign Details Response:", campaignDetailsJson);
 
   return campaignDetailsJson;
 };
@@ -145,4 +144,22 @@ export const updateInteractiveMap = async (mapId, mapData, token) => {
   const updatedMapJson = await response.json();
   return updatedMapJson;
 };
+
+
+
+export const createNote = async (noteData, token) => {
+  const response = await fetch(`${APIURL}/notes`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(noteData),
+  });
+  const newNoteJson = await response.json();
+  return newNoteJson;
+};
+
+
+
 
