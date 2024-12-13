@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getCampaignDetails, getUserDetails, createNote } from "../api/api";
 import MyMap from "../components/mymap";
+import NotesList from "../components/notesList";
+import NoNotes from "../components/noNotes";
 
 const DmHub = () => {
 
-  const [userDetails, setUserDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState([]);
   const [campaignDetails, setCampaignDetails] = useState([]);
   const [newNoteData, setNewNoteData] = useState({
     content: "",
@@ -71,6 +73,10 @@ const DmHub = () => {
   if (campaignDetails.length === 0) {
     return <p>Loading</p>
 }
+if (userDetails.length === 0) {
+  return <p>Loading</p>
+}
+  console.log(userDetails.notes.length)
 return (
   <div className="dm-hub-page">
     <div className="dm-hub-container">
@@ -87,16 +93,14 @@ return (
           </ul>
           <button>Invite</button>
           <h4>My Notes</h4>
-          <ol>
-            {userDetails?.notes.map(note => {
-              return <li>{note.content}</li>
-            })}
-          </ol>
+           { userDetails.notes.length ? <NotesList /> :
+            <NoNotes />}
           <p>{campaignDetails.description}</p>
+       
         </div>
         <h4>Add note</h4>
           <form onSubmit={handleCreateNote} className="create-note-form">
-            <div>
+            
               <label>Type note here</label>
               <input
                 id="content"
@@ -106,7 +110,6 @@ return (
                 onChange={handleChange}
                 required
               />
-            </div>
             <button type="submit">Create note</button>
           </form>
         <div className="map-position">
