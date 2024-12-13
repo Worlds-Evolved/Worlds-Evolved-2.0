@@ -10,6 +10,7 @@ import MyMap from "./components/mymap";
 import './App.css'
 import PlayerHub from "./pages/player-hub";
 import HomeMap from "./components/HomePageMap";
+import AdminDashboard from "./pages/admin-dashboard";
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/mymap" element={<MyMap />} />
         <Route path="/homemap" element={<HomeMap />} />
         <Route path="/playerhub" element={<PlayerHub />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </>
   );

@@ -6,8 +6,8 @@ const prisma = require("../prisma/index.cjs");
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 
-function createToken(userId) {
-  return jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: "1d" });
+function createToken(userId, role) {
+  return jwt.sign({ id: userId, role }, JWT_SECRET, { expiresIn: "1d" });
 }
 
 router.use(async (req, res, next) => {
@@ -65,7 +65,7 @@ router.post("/login", async (req, res, next) => {
       throw { status: 401, message: "Invalid Password" };
     }
 
-    const token = createToken(user.id);
+    const token = createToken(user.id, user.role);
 
     res.json({ token, role: user.role });
   } catch (error) {
