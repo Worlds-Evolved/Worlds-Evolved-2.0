@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getCampaignDetails, getUserDetails, createNote } from "../api/api";
 import MyMap from "../components/mymap";
+import NotesList from "../components/notesList";
+import NoNotes from "../components/noNotes";
 
 const PlayerHub = () => {
 
@@ -89,11 +91,8 @@ const PlayerHub = () => {
           })}
 
           <h4>My Notes</h4>
-          <ol>
-            {userDetails?.notes.map(note => {
-              return <li>{note.content}</li>
-            })}
-          </ol>
+          { userDetails.notes.length ? <NotesList /> :
+            <NoNotes />}
           <h4>Add note</h4>
           <form onSubmit={handleCreateNote} className="create-note-form">
             <div>
