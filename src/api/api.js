@@ -72,7 +72,7 @@ export const getCampaignDetails = async (campaignId, token) => {
 };
 
 export const createCampaign = async (campaignData, token) => {
-  const response = await fetch(`${APIURL}/campaigns`, {
+  const response = await fetch(`${APIURL}/campaign`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export const createCampaign = async (campaignData, token) => {
 };
 
 export const updateCampaign = async (campaignId, campaignData, token) => {
-  const response = await fetch(`${APIURL}/campaigns/${campaignId}`, {
+  const response = await fetch(`${APIURL}/campaign/${campaignId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ export const updateCampaign = async (campaignId, campaignData, token) => {
 };
 
 export const getInteractiveMaps = async (campaignId, token) => {
-  const response = await fetch(`${APIURL}/campaigns/${campaignId}/maps`, {
+  const response = await fetch(`${APIURL}/campaign/${campaignId}/maps`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
@@ -120,7 +120,7 @@ export const getInteractiveMapDetails = async (mapId, token) => {
 };
 
 export const createInteractiveMap = async (campaignId, mapData, token) => {
-  const response = await fetch(`${APIURL}/campaigns/${campaignId}/maps`, {
+  const response = await fetch(`${APIURL}/campaign/${campaignId}/maps`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
