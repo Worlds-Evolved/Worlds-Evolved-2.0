@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getUserDetails, getCampaignDetails } from "../api/api";
 import { createCampaign, changePassword } from "../api/api";
 import { useNavigate } from "react-router-dom";
+import './account.css'
 
 const AccountPage = () => {
   const [userDetails, setUserDetails] = useState(null);
