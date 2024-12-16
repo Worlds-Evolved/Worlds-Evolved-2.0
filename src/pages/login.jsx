@@ -1,14 +1,14 @@
-import React from "react"
-import { useState } from "react"
+import React, { useState } from "react";
 import { loginUser } from "../api/api";
 import { useNavigate } from "react-router-dom";
+import './logres.css'
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const credentials = { username, password };
 
@@ -30,16 +30,26 @@ const Login = () => {
     <div className="page-container">
       <div className="login-container">
         <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
+        <form className="form-container" onSubmit={handleSubmit}>
           <label>
-            Username: 
-            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} />
+            <b>Username:</b>
+            <input
+              type="text"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              className="input-field"
+            />
           </label>
           <label>
-            Password: 
-            <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+            <b>Password:</b>
+            <input
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="input-field"
+            />
           </label>
-          <button type="submit">Submit</button>
+          <button className="submit-button" type="submit">Login</button>
         </form>
       </div>
     </div>

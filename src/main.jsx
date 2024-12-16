@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './assets/oldbook-css-main/oldbook.css'
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
 )

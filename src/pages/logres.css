@@ -1,0 +1,72 @@
+.page-container {
+  background-color: #fff3c9;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  border: 3px solid #8b0000;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-family: "IM Fell DW Pica SC", serif;
+  color: #8b0000;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-family: "IM Fell DW Pica", serif;
+  font-size: 1.35rem;
+  color: #8b0000;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  font-family: "IM Fell DW Pica", serif;
+  font-size: 1.2rem;
+  padding: 8px;
+  border: 2px solid #8b0000;
+  border-radius: 5px;
+  background-color: #fff8e1;
+  color: #8b0000;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #facf7f;
+  background-color: #facf7f;
+}
+
+.submit-button {
+  font-family: "IM Fell DW Pica SC", serif;
+  font-size: 1.5rem;
+  background-color: #8b0000;
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px solid #8b0000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #facf7f;
+  color: #8b0000;
+  border-color: #facf7f;
+}
+
+.submit-button:active {
+  background-color: #d40000;
+  color: #fff;
+  border-color: #d40000;
+}

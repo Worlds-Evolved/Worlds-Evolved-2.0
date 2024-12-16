@@ -1,17 +1,16 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { registerUser } from "../api/api";
+import './logres.css'
 
 const Register = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const userData = { username, email, password };
-    console.log(userData)
+
     try {
       const response = await registerUser(userData);
       if (response.token) {
@@ -26,27 +25,42 @@ const Register = ({ setToken }) => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="username" value={username} onChange={(event) => setUsername(event.target.value)} />
-        </label>
-
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-        </label>
-
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+    <div className="page-container">
+      <div className="register-container">
+        <h2>Register</h2>
+        <form className="form-container" onSubmit={handleSubmit}>
+          <label>
+            <b>Username:</b>
+            <input
+              type="text"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              className="input-field"
+            />
+          </label>
+          <label>
+            <b>Email:</b>
+            <input
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              className="input-field"
+            />
+          </label>
+          <label>
+            <b>Password:</b>
+            <input
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="input-field"
+            />
+          </label>
+          <button className="submit-button" type="submit">Register</button>
+        </form>
+      </div>
     </div>
-
-  )
+  );
 };
-export default Register
+
+export default Register;
