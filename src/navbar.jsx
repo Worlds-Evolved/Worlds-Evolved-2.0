@@ -11,8 +11,7 @@ const NavBar = () => {
   useEffect(() => {
     if (isLoggedIn && token) {
       try {
-        const decodedToken = jwtDecode(token);
-        console.log(decodedToken);  
+        const decodedToken = jwtDecode(token);  
         setIsAdmin(decodedToken?.role === "ADMIN");
       } catch (error) {
         console.error("Failed to decode token:", error);

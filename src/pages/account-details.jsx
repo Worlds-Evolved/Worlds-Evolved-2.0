@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getUserDetails, getCampaignDetails } from "../api/api";
 import { createCampaign, changePassword } from "../api/api";
 import { useNavigate } from "react-router-dom";
+import './account.css'
 
 const AccountPage = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -40,7 +41,7 @@ const AccountPage = () => {
       }
     
       try {
-        const campaignIds = [11];
+        const campaignIds = [11, 14];
         const fetchedCampaigns = await Promise.all(
           campaignIds.map((id) => getCampaignDetails(id, token))
         );
@@ -103,6 +104,11 @@ const AccountPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewCampaignData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); 
+    navigate("/"); 
   };
 
   const handlePasswordInputChange = (e) => {
@@ -215,6 +221,9 @@ const AccountPage = () => {
           </div>
         )}
       </div>
+      <button onClick={handleLogout} className="logout-button">
+              Logout
+            </button>
     </div>
   );
 };

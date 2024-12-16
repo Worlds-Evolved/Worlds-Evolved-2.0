@@ -3,8 +3,8 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-  "email": "mk@matt.com",
-  "username": "mk",
+  "email": "mattk@matt.com",
+  "username": "mattk",
   "password": "mk"
 }
 
@@ -14,8 +14,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "username": "admin",
-  "password": "admin"
+  "username": "mattk",
+  "password": "mk"
 }
 
 ### Get user information
@@ -30,9 +30,9 @@ Authorization: Bearer {{token}}
 
 
 {
-  "title": "Epic Adventure",
+  "title": "Khorvahuad",
   "description": "A thrilling journey through dangerous lands.",
-  "playerIds": [2, 3, 4, 5, 6, 7, 8]  
+  "playerIds": [11, 32, 34, 35, 26, 17, 52]  
 }
 
 ### Details of all Campaigns

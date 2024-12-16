@@ -45,7 +45,10 @@ const Home = () => {
 
         <div className="row">
           <div className="text-container">
-            <p>Image/Video: Interactive maps and storytelling</p>
+            <p>
+              Connect players with the history, events, and mysteries that shape
+              their journey all in one centralized hub.
+            </p>
           </div>
           <div className="iframe-container">
             <iframe
@@ -61,10 +64,6 @@ const Home = () => {
 
         <div className="row">
           <div className="text-container">
-            <p>
-              Connect players with the history, events, and mysteries that shape
-              their journey all in one centralized hub.
-            </p>
           </div>
         </div>
       </div>
