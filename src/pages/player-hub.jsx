@@ -84,38 +84,41 @@ const PlayerHub = () => {
 
             <h3> Welcome to {campaignDetails?.title}! Hosted by {campaignDetails?.gameMaster.username}</h3>
           </div>
+          <div className="content-wrapper">
+            <h4>Players</h4>
+            {campaignDetails?.players.map(player => {
+              return <li>{player.username}</li>
+            })}
 
-          <h4>Players</h4>
-          {campaignDetails?.players.map(player => {
-            return <li>{player.username}</li>
-          })}
-
-          <h4>My Notes</h4>
-          { userDetails.notes.length ? <NotesList /> :
-            <NoNotes />}
-          <h4>Add note</h4>
-          <form onSubmit={handleCreateNote} className="create-note-form">
-            <div>
-              <label>Type note here</label>
-              <input
-                id="content"
-                name="content"
-                type="text"
-                value={newNoteData.content}
-                onChange={handleChange}
-                required
-              />
+            <h4>My Notes</h4>
+            {userDetails.notes.length ? <NotesList /> :
+              <NoNotes />}
+            <h4>Add note</h4>
+            <form onSubmit={handleCreateNote} className="create-note-form">
+              <div>
+                <label>Type note here</label>
+                <input
+                  id="content"
+                  name="content"
+                  type="text"
+                  value={newNoteData.content}
+                  onChange={handleChange}
+                  required
+                  className="input-field"
+                />
+              </div>
+              <button type="submit" className="submit-button">Create note</button>
+            </form>
+            <p>{campaignDetails.description}</p>
+            <div className="map-position">
+              <div className="leaflet-container">
+                <MyMap />
+              </div>
             </div>
-            <button type="submit">Create note</button>
-          </form>
-          <p>{campaignDetails.description}</p>
-          <div className="map-position">
-          <MyMap />
-        </div>
+          </div>
         </div>
       </div>
     </div>
-
   );
 
 };
