@@ -6,7 +6,7 @@ import NoNotes from "../components/noNotes";
 
 const DmHub = () => {
 
-  const [userDetails, setUserDetails] = useState([]);
+  const [userDetails, setUserDetails] = useState({});
   const [campaignDetails, setCampaignDetails] = useState([]);
   const [newNoteData, setNewNoteData] = useState({
     content: "",

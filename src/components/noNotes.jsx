@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getUserDetails } from "../api/api";
 const NoNotes = () => {
 
-const [userDetails, setUserDetails] = useState([]);
+const [userDetails, setUserDetails] = useState({});
 
 const token = localStorage.getItem('token');
 if (!token) return;
@@ -25,18 +25,21 @@ useEffect(() => {
 
 }, [token]);
 
-if (userDetails.length === 0) {
-  return <p>Loading</p>
-}
+const notes = userDetails?.notes || [];
 
-console.log(userDetails?.notes.map(note => {
-  return <li key={note.id}>{note.content}</li>
-}))
+if (!userDetails?.id) {
+    return <p>Loading</p>; 
+  }
 
-
-return (
-  <p>You don't have any notes</p>
-)
-}
+  return notes.length ? (
+    <ul>
+      {notes.map((note) => (
+        <li key={note.id}>{note.content}</li>
+      ))}
+    </ul>
+  ) : (
+    <p>You don't have any notes</p>
+  );
+};
 export default NoNotes;
  
