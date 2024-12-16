@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { loginUser } from "../api/api";
 import { useNavigate } from "react-router-dom";
+import './logres.css'
 
 const Login = () => {
   const [username, setUsername] = useState('');

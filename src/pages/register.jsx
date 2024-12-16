@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../api/api";
+import './logres.css'
 
 const Register = ({ setToken }) => {
   const [username, setUsername] = useState('');
