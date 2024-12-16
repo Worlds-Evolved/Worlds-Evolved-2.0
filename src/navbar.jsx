@@ -31,6 +31,7 @@ const NavBar = () => {
         {!isLoggedIn && <Link to="/register">Register</Link>}
         {isLoggedIn && <Link to="/account">Account</Link>}
         {isLoggedIn && <Link to="/dmhub">Dm Hub</Link>}
+        {isLoggedIn && <Link to="/playerhub">Players Hub</Link>}
         {isAdmin && <Link to="/admin/dashboard">Admin Dashboard</Link>}
     </nav>
   )
