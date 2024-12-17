@@ -5,12 +5,17 @@ const HomeMap = () => {
   const imageUrl = "https://d.img.vision/capstone/Copy_of_Uldenhiem.png";
   const bounds = [
     [0, 0],
-    [5500, 8192],
+    [2048, 4096],
   ];
 
   const maxBounds = [
     [0, 0],  // Southwest coordinates
-    [5500, 8192]  // Northeast coordinates
+    [2048, 4096]  // Northeast coordinates
+  ];
+
+  const center = [
+    (bounds[0][0] + bounds[1][0]) / 2,
+    (bounds[0][1] + bounds[1][1]) / 2,
   ];
   
   return (
@@ -18,6 +23,7 @@ const HomeMap = () => {
       <MapContainer
         crs={L.CRS.Simple}
         bounds={bounds}
+        center={center}
         style={{ height: "100%", width: "100%", margin: 0, padding: 0 }}
         zoom={-2} // Start zoomed out
         minZoom={-3} // Allow zooming further out
