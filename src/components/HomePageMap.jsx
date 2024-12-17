@@ -5,12 +5,12 @@ const HomeMap = () => {
   const imageUrl = "https://d.img.vision/capstone/Copy_of_Uldenhiem.png";
   const bounds = [
     [0, 0],
-    [5500, 8192],
+    [2048, 4096],
   ];
 
   const maxBounds = [
     [0, 0],  // Southwest coordinates
-    [5500, 8192]  // Northeast coordinates
+    [2048, 4096]  // Northeast coordinates
   ];
 
   const center = [
